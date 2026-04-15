@@ -28,6 +28,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope-Variable.woff2') format('woff2-variations');
+    font-weight: 200 800; /* This covers everything from Light to Extra Bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: -0.01em; /* Slight tightening makes it look more "designed" */
+}
+
+h1, h2, h3 {
+    font-weight: 800; /* Extra bold for headings to make them pop */
+    color: var(--accent-purple);
+}
 
 body {
     background-color: var(--bg-main);
