@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Eli Kessler | Portfolio</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="css/style.css">
-    
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme') || 'light';
@@ -19,40 +14,47 @@
 </head>
 <body>
 
-        <header class="main-header">
+<header class="main-header">
     <div class="header-container">
-        <a href="/" class="logo">
+        <a href="index.html" class="logo">
             <span class="logo-dot"></span> ELI<span>KESSLER</span>
         </a>
 
         <nav class="nav-links">
-            <a href="/">Home</a>
-            <a href="resume">Resume</a>
-            <a href="experience">Experience</a>
+            <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+            <a href="resume.html" data-en="Resume" data-es="Currículum">Resume</a>
+            <a href="experience.html" data-en="Experience" data-es="Experiencia">Experience</a>
         </nav>
 
         <div class="page-settings">
-            <button id="lang-toggle" class="settings-btn" title="Translate to Spanish">
-                <span class="icon">ES</span>
+            <button id="lang-toggle" class="settings-btn" title="Translate">
+                <span id="lang-text">ES</span>
             </button>
-            <button id="theme-toggle" class="settings-btn" title="Toggle Dark Mode">
-                <span class="icon" id="theme-icon">🌙</span>
+            <button id="theme-toggle" class="settings-btn" title="Toggle Theme">
+                <span id="theme-icon">🌙</span>
             </button>
-        </div>
-        
-        <div class="mobile-menu-btn">
-            <span></span><span></span><span></span>
         </div>
     </div>
 </header>
 
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-en="Crafting digital experiences." data-es="Creando experiencias digitales.">
+                Crafting digital experiences.
+            </h1>
+            <p data-en="Accounting student at UMD with a passion for clean code and bilingual communication." 
+               data-es="Estudiante de contabilidad en UMD con pasión por el código limpio y la comunicación bilingüe.">
+                Accounting student at UMD with a passion for clean code and bilingual communication.
+            </p>
+            <div class="hero-btns">
+                <a href="experience.html" class="btn btn-primary" data-en="View Projects" data-es="Ver Proyectos">View Projects</a>
+                <a href="resume.html" class="btn btn-secondary" data-en="Download Resume" data-es="Descargar CV">Download Resume</a>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <main class="content-wrapper">
-        <section class="hero">
-            <h1 data-en="Hello, I'm Eli." data-es="Hola, soy Eli.">Hello, I'm Eli.</h1>
-        </section>
-    </main>
-
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
