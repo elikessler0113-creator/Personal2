@@ -322,3 +322,32 @@ body {
 .contact-link:active {
     color: var(--acc-green);
 }
+.nav-linkedin {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-weight: 500;
+    margin-left: 2rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+/* Specific hover color for LinkedIn to differentiate it from internal pages */
+.nav-links .nav-linkedin:hover {
+    color: var(--acc-purple);
+}
+
+/* Reusing your underline animation for the LinkedIn link */
+.nav-linkedin::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--acc-purple);
+    transition: width 0.3s ease;
+}
+
+.nav-linkedin:hover::after {
+    width: 100%;
+}
