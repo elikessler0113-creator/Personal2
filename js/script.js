@@ -39,10 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Simple translation switcher
-function applyLanguage(lang) {
-    const elements = document.querySelectorAll('[data-en]');
-    elements.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
-    });
-}
+function updateLangButton(lang) {
+    const langLabel = document.getElementById('lang-label');
+    if (langLabel) {
+        // This pulls the correct text from the data attributes we just added
+        const newText = langLabel.getAttribute(`data-${lang}`);
+        langLabel.textContent = newText;
+    }
+});
