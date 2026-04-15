@@ -1,13 +1,34 @@
-<header class="main-header">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Eli Kessler | Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+
+        <header class="main-header">
     <div class="header-container">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
             <span class="logo-dot"></span> ELI<span>KESSLER</span>
         </a>
 
         <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="resume.html">Resume</a>
-            <a href="experience.html">Experience</a>
+            <a href="/">Home</a>
+            <a href="resume">Resume</a>
+            <a href="experience">Experience</a>
         </nav>
 
         <div class="page-settings">
@@ -24,3 +45,14 @@
         </div>
     </div>
 </header>
+
+
+    <main class="content-wrapper">
+        <section class="hero">
+            <h1 data-en="Hello, I'm Eli." data-es="Hola, soy Eli.">Hello, I'm Eli.</h1>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
