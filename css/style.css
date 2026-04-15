@@ -302,3 +302,23 @@ body {
         text-align: center;
     }
 }
+.contact-link {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Subtle "lift" effect when hovering over footer links */
+.contact-link:hover {
+    color: var(--acc-purple);
+    transform: translateY(-2px);
+}
+
+/* Optional: Add a small dot after the link to match your logo style */
+.contact-link:active {
+    color: var(--acc-green);
+}
