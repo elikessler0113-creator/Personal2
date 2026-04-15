@@ -1,25 +1,68 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eli Kessler | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+
 <header class="main-header">
     <div class="header-container">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
             <span class="logo-dot"></span> ELI<span>KESSLER</span>
         </a>
 
         <nav class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="resume.html">Resume</a>
-            <a href="experience.html">Experience</a>
+            <a href="/" data-en="Home" data-es="Inicio">Home</a>
+            <a href="resume" data-en="Resume" data-es="Currículum">Resume</a>
+            <a href="experience" data-en="Experience" data-es="Experiencia">Experience</a>
+            <a href="https://linkedin.com/in/kesslere" target="_blank" class="nav-linkedin">LinkedIn</a>
         </nav>
 
-        <button id="lang-toggle" class="settings-btn lang-btn" title="Translate">
-    <span id="lang-label" data-en="View in Spanish" data-es="Ver en Inglés">View in Spanish</span>
-        </button>
-            <button id="theme-toggle" class="settings-btn" title="Toggle Dark Mode">
-                <span class="icon" id="theme-icon">🌙</span>
-            </button>
-        </div>
-        
-        <div class="mobile-menu-btn">
-            <span></span><span></span><span></span>
-        </div>
+       <div class="page-settings">
+    <button id="lang-toggle" class="settings-btn lang-btn">
+        <span id="lang-label" data-en="Ver en Español" data-es="View in English">Ver en Español</span>
+    </button>
+    
+    <button id="theme-toggle" class="settings-btn theme-btn">
+        <span id="theme-label" data-en="Dark Mode" data-es="Modo Oscuro">Dark Mode</span>
+    </button>
+</div>
     </div>
 </header>
+
+<main>
+    
+</main>
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-info">
+            <p>&copy; 2026 Eli Kessler. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+        </div>
+        <div class="footer-contact">
+            <a href="https://linkedin.com/in/YOUR-PROFILE" target="_blank" class="contact-link">
+                <span data-en="LinkedIn" data-es="LinkedIn">LinkedIn</span>
+            </a>
+        <div class="footer-contact">
+            <a href="mailto:ekessler1306@gmail.com" class="contact-link">
+                <span data-en="Email" data-es="Correo">Email</span>
+            </a>
+            <span class="separator">|</span>
+            <a href="tel:+1 (952) 215 - 9145" class="contact-link">
+                <span data-en="Phone" data-es="Teléfono">Phone</span>
+            </a>
+            
+        </div>
+    </div>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>
