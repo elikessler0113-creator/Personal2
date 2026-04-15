@@ -1,51 +1,44 @@
-// This function runs every time the page loads
 document.addEventListener('DOMContentLoaded', () => {
-    
     // 1. SELECT ELEMENTS
     const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
+    const themeLabel = document.getElementById('theme-label');
     const langToggle = document.getElementById('lang-toggle');
     const langLabel = document.getElementById('lang-label');
-    const body = document.body;
 
     // 2. INITIAL STATE (Theme)
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    if (themeIcon) {
-        themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-    }
 
     // 3. INITIAL STATE (Language)
     const savedLang = localStorage.getItem('language') || 'en';
     applyLanguage(savedLang);
-    updateLangButton(savedLang);
 
-    // 4. THEME TOGGLE EVENT
+    // 4. INITIAL BUTTON TEXTS
+    updateButtonTexts(savedTheme, savedLang);
+
+    // 5. THEME TOGGLE EVENT
     if (themeToggle) {
         themeToggle.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevents jumpy behavior
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
+            const currentLang = localStorage.getItem('language') || 'en';
+
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            
-            if (themeIcon) {
-                themeIcon.textContent = newTheme === 'light' ? '🌙' : '☀️';
-            }
+            updateButtonTexts(newTheme, currentLang);
         });
     }
 
-    // 5. LANGUAGE TOGGLE EVENT
+    // 6. LANGUAGE TOGGLE EVENT
     if (langToggle) {
         langToggle.addEventListener('click', (e) => {
-            e.preventDefault();
             const currentLang = localStorage.getItem('language') || 'en';
             const newLang = currentLang === 'en' ? 'es' : 'en';
-            
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+
             localStorage.setItem('language', newLang);
             applyLanguage(newLang);
-            updateLangButton(newLang);
+            updateButtonTexts(currentTheme, newLang);
         });
     }
 
@@ -62,10 +55,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = lang;
     }
 
-    function updateLangButton(lang) {
+    function updateButtonTexts(theme, lang) {
+        // Update Language Button
         if (langLabel) {
-            const newText = langLabel.getAttribute(`data-${lang}`);
-            langLabel.textContent = newText;
+            langLabel.textContent = langLabel.getAttribute(`data-${lang}`);
+        }
+
+        // Update Theme Button
+        if (themeLabel) {
+            if (theme === 'light') {
+                themeLabel.textContent = (lang === 'en') ? 'Dark Mode' : 'Modo Oscuro';
+            } else {
+                themeLabel.textContent = (lang === 'en') ? 'Light Mode' : 'Modo Claro';
+            }
         }
     }
 });
