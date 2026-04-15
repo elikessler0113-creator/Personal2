@@ -147,6 +147,37 @@ body {
     cursor: pointer; color: var(--text);
     margin-left: 0.5rem;
 }
+.lang-btn {
+    padding: 8px 16px; /* Wider padding for the longer text */
+    min-width: 140px;  /* Ensures the button doesn't jump in size when text swaps */
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: var(--acc-purple);
+    color: white;
+    border-color: var(--acc-purple);
+}
+
+/* On very small phones, we might want to shorten it if it hits the logo */
+@media (max-width: 400px) {
+    .lang-btn {
+        min-width: auto;
+        padding: 8px 10px;
+    }
+    #lang-label {
+        font-size: 0.75rem;
+    }
+}
 /* --- MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
     .header-container {
