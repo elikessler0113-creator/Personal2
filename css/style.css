@@ -1,1 +1,104 @@
-hello
+:root {
+    /* Light Mode Variables */
+    --bg-main: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1b;
+    --text-secondary: #4a4a4b;
+    --accent-green: #2e6f40; /* Forest Green */
+    --accent-purple: #6c5ce7; /* Soft Purple */
+    --header-blur: rgba(248, 249, 250, 0.8);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Variables */
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-green: #4ade80; /* Brighter Green for Dark */
+    --accent-purple: #a29bfe; /* Brighter Purple for Dark */
+    --header-blur: rgba(15, 23, 42, 0.8);
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+/* Header Styling */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--header-blur);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-primary);
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span { color: var(--accent-purple); }
+
+.logo-dot {
+    height: 10px;
+    width: 10px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+}
+
+.nav-links a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-green);
+}
+
+.settings-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-primary);
+    margin-left: 0.5rem;
+    transition: var(--transition);
+}
+
+.settings-btn:hover {
+    background: var(--accent-purple);
+    color: white;
+}
