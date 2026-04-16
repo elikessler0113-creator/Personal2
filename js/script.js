@@ -71,3 +71,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+// --- Inside your DOMContentLoaded listener ---
+const menuToggle = document.getElementById('menu-toggle');
+const mobileOverlay = document.getElementById('mobile-overlay');
+const menuIcon = document.getElementById('menu-icon');
+
+if (menuToggle && mobileOverlay) {
+    menuToggle.addEventListener('click', () => {
+        mobileOverlay.classList.toggle('active');
+        
+        // Swap icon between Hamburger and X
+        if (mobileOverlay.classList.contains('active')) {
+            menuIcon.textContent = '✕';
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        } else {
+            menuIcon.textContent = '☰';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+    });
+}
+
+// Close menu if a link is clicked
+const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileOverlay.classList.remove('active');
+        menuIcon.textContent = '☰';
+        document.body.style.overflow = 'auto';
+    });
+});
