@@ -513,35 +513,53 @@ body {
         width: auto; height: 3px;
     }
 }
-/* --- HAMBURGER & OVERLAY --- */
-.mobile-only {
-    display: none; /* Hidden on Desktop */
+/* --- 1. GLOBAL LINK RESET --- */
+/* This fixes the blue/underlined links from your screenshot */
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
+/* --- 2. HIDE MOBILE ELEMENTS ON DESKTOP --- */
+#menu-toggle, 
+.mobile-only, 
+.mobile-overlay {
+    display: none !important;
+}
+
+/* --- 3. MOBILE STYLES (Only active under 768px) --- */
 @media (max-width: 768px) {
+    /* Hide the desktop links */
+    .nav-links {
+        display: none !important;
+    }
+
+    /* Show the Hamburger button */
+    #menu-toggle, 
     .mobile-only {
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: center;
     }
 
     /* The Overlay Menu */
     .mobile-overlay {
+        display: flex !important; /* Important for JS to toggle it */
         position: fixed;
-        top: -100%; /* Start off-screen */
+        top: -100%; /* Hidden off-screen by default */
         left: 0;
         width: 100%;
         height: 100vh;
         background: var(--bg);
-        z-index: 90; /* Just below the header */
+        z-index: 90;
         transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
         align-items: center;
         justify-content: center;
     }
 
+    /* When JS adds the .active class */
     .mobile-overlay.active {
-        top: 0; /* Slide down into view */
+        top: 0; 
     }
 
     .mobile-nav-links {
@@ -552,9 +570,13 @@ body {
     }
 
     .mobile-nav-links a {
-        text-decoration: none;
         color: var(--text);
         font-size: 1.5rem;
         font-weight: 700;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-nav-links a:hover {
+        color: var(--acc-purple);
     }
 }
