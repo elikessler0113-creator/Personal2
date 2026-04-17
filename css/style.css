@@ -927,3 +927,51 @@ a {
     background: var(--acc-purple);
     border-color: var(--acc-purple);
 }
+/* --- MUSIC UNIQUE STYLES --- */
+.music-experience {
+    max-width: 800px;
+    margin: 40px auto;
+    padding-left: 20px;
+    border-left: 2px solid var(--border); /* The rhythm line */
+}
+
+.music-item {
+    margin-bottom: 50px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.music-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.music-dot {
+    position: absolute;
+    left: -7px; /* Centers dot on the rhythm line */
+    height: 12px;
+    width: 12px;
+    background: var(--acc-purple);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.music-item:hover .music-dot {
+    transform: scale(1.5);
+    background: var(--acc-green);
+}
+
+.music-header h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+}
+
+.music-content p {
+    color: var(--text-dim);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 650px;
+}
