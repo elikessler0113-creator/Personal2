@@ -147,3 +147,36 @@ document.getElementById('nextBadge').addEventListener('click', () => {
     currentBadgeIdx = (currentBadgeIdx + 1) % badges.length;
     updateSlider();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    let currentBadgeIdx = 0;
+    const badges = document.querySelectorAll('.badge-item');
+
+    function updateSlider() {
+        badges.forEach((badge, i) => {
+            badge.classList.remove('active', 'prev', 'next', 'hidden');
+            
+            if (i === currentBadgeIdx) {
+                badge.classList.add('active');
+            } else if (i === (currentBadgeIdx - 1 + badges.length) % badges.length) {
+                badge.classList.add('prev'); // This places the last badge on the left
+            } else if (i === (currentBadgeIdx + 1) % badges.length) {
+                badge.classList.add('next'); // This places the next badge on the right
+            } else {
+                badge.classList.add('hidden');
+            }
+        });
+    }
+
+    // --- ADD THIS LINE ---
+    updateSlider(); // Runs immediately so the left badge shows up on load
+
+    document.getElementById('prevBadge').addEventListener('click', () => {
+        currentBadgeIdx = (currentBadgeIdx - 1 + badges.length) % badges.length;
+        updateSlider();
+    });
+
+    document.getElementById('nextBadge').addEventListener('click', () => {
+        currentBadgeIdx = (currentBadgeIdx + 1) % badges.length;
+        updateSlider();
+    });
+});
