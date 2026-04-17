@@ -665,3 +665,98 @@ a {
         flex: 0 0 150px;
     }
 }
+/* --- RESUME PAGE --- */
+.resume-page {
+    max-width: 900px;
+    margin: 120px auto 100px auto;
+    padding: 0 2rem;
+}
+
+/* Download Buttons */
+.download-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    min-width: 220px;
+}
+
+.download-btn:hover {
+    border-color: var(--acc-purple);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.btn-icon { font-size: 1.5rem; color: var(--acc-purple); }
+.btn-text { display: flex; flex-direction: column; }
+.btn-text small { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); }
+.btn-text strong { color: var(--text); font-size: 1rem; }
+
+/* Resume List Styling */
+.resume-group { margin-bottom: 60px; }
+.section-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--acc-green);
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.resume-item { margin-bottom: 40px; }
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.item-header h3 { font-size: 1.3rem; color: var(--text); }
+.date { font-size: 0.9rem; color: var(--text-dim); font-weight: 500; }
+.subtitle { color: var(--acc-purple); font-weight: 600; margin-bottom: 10px; }
+
+.resume-list {
+    padding-left: 20px;
+    color: var(--text-dim);
+    line-height: 1.6;
+}
+
+.resume-list li { margin-bottom: 8px; }
+
+@media (max-width: 600px) {
+    .download-container { flex-direction: column; }
+    .item-header { flex-direction: column; gap: 5px; }
+}
+/* Layout for the bottom section of the resume */
+.skills-awards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Mobile fix for the grid */
+@media (max-width: 768px) {
+    .skills-awards-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
