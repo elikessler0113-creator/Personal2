@@ -120,3 +120,30 @@ const barObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 progressBars.forEach(bar => barObserver.observe(bar));
+let currentBadgeIdx = 0;
+const badges = document.querySelectorAll('.badge-item');
+
+function updateSlider() {
+    badges.forEach((badge, i) => {
+        badge.classList.remove('active', 'prev', 'next', 'hidden');
+        if (i === currentBadgeIdx) {
+            badge.classList.add('active');
+        } else if (i === (currentBadgeIdx - 1 + badges.length) % badges.length) {
+            badge.classList.add('prev');
+        } else if (i === (currentBadgeIdx + 1) % badges.length) {
+            badge.classList.add('next');
+        } else {
+            badge.classList.add('hidden');
+        }
+    });
+}
+
+document.getElementById('prevBadge').addEventListener('click', () => {
+    currentBadgeIdx = (currentBadgeIdx - 1 + badges.length) % badges.length;
+    updateSlider();
+});
+
+document.getElementById('nextBadge').addEventListener('click', () => {
+    currentBadgeIdx = (currentBadgeIdx + 1) % badges.length;
+    updateSlider();
+});
