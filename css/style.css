@@ -1176,3 +1176,117 @@ a {
         grid-template-columns: 1fr;
     }
 }
+/* --- TECH & BADGE GALLERY --- */
+.tech-section {
+    max-width: 1100px;
+    margin-bottom: 120px;
+    margin-left: 0;
+    padding: 0 2rem;
+    text-align: left;
+}
+
+.tech-summary { max-width: 800px; margin-bottom: 60px; }
+
+.tech-skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.tech-tag {
+    padding: 8px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Slider Logic */
+.badge-gallery-container {
+    position: relative;
+    max-width: 900px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.badge-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-item {
+    position: absolute;
+    width: 300px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 24px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* 3D Positions */
+.badge-item.active {
+    opacity: 1;
+    z-index: 10;
+    transform: translateZ(0) scale(1);
+    pointer-events: auto;
+}
+
+.badge-item.prev {
+    opacity: 0.4;
+    z-index: 5;
+    transform: translateX(-100%) scale(0.8) rotateY(20deg);
+}
+
+.badge-item.next {
+    opacity: 0.4;
+    z-index: 5;
+    transform: translateX(100%) scale(0.8) rotateY(-20deg);
+}
+
+.badge-visual {
+    font-size: 4rem;
+    color: var(--acc-purple);
+    margin-bottom: 15px;
+}
+
+.badge-year {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--acc-green);
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: -60px;
+    display: flex;
+    gap: 20px;
+}
+
+.slider-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider-btn:hover { background: var(--acc-purple); color: white; border-color: var(--acc-purple); }
