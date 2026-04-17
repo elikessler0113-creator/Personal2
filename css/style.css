@@ -31,7 +31,23 @@
     --border: rgba(240, 246, 252, 0.1);
     --header-bg: rgba(13, 17, 23, 0.85);
 }
+/* Ensure buttons adapt to Dark Mode */
+[data-theme="dark"] .settings-btn {
+    border-color: var(--border);
+    color: var(--text); /* This will now use the #f0f6fc light color */
+    background: transparent;
+}
 
+[data-theme="dark"] .settings-btn:hover {
+    background: var(--acc-purple);
+    color: #ffffff; /* Keep text white on hover for contrast */
+}
+
+/* Fix for the Light Mode / Dark Mode toggle text specifically */
+[data-theme="dark"] #theme-label, 
+[data-theme="dark"] #lang-label {
+    color: var(--text);
+}
 /* --- 3. RESET & BASE --- */
 * {
     margin: 0;
@@ -296,12 +312,15 @@ a {
 }
 
 .tag {
+    display: inline-block; /* Ensures the tag behaves as a single unit */
+    white-space: nowrap;   /* Prevents the text inside from breaking */
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 8px;    /* Adds space between rows of tags */
 }
 
 .tag-green {
@@ -419,6 +438,7 @@ a {
 }
 
 .section-title {
+    margin-top: 50px;      /* Creates the missing space between sections */
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -448,10 +468,18 @@ a {
 
 .skills-awards-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr; /* Gives the text side slightly more room */
     gap: 4rem;
+    margin-top: 20px;
 }
 
+/* Ensure tags have a clean gap in their container */
+.skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-content: flex-start;
+}
 /* --- 11. EXPERIENCE PAGE --- */
 .experience-page {
     max-width: 1100px;
