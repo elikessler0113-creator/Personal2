@@ -1245,10 +1245,12 @@ a {
     pointer-events: auto;
 }
 
+/* Explicitly define the previous position to be visible */
 .badge-item.prev {
     opacity: 0.4;
     z-index: 5;
     transform: translateX(-100%) scale(0.8) rotateY(20deg);
+    pointer-events: auto; /* Allows it to be seen/interacted with */
 }
 
 .badge-item.next {
