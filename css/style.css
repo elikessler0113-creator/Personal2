@@ -210,7 +210,18 @@ body {
         font-size: 0.75rem;
     }
 }
+@media (max-width: 768px) {
+    /* Your settings container (theme/lang toggles) */
+    .header-settings {
+        order: 1; /* Appears first */
+    }
 
+    /* Your hamburger button */
+    .mobile-menu-toggle {
+        order: 2; /* Appears after the settings */
+        margin-left: 15px; /* Adds a little gap between the icons */
+    }
+}
 @media (max-width: 400px) {
     .lang-btn {
         min-width: auto;
