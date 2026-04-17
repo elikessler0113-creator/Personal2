@@ -1315,3 +1315,66 @@ a {
 }
 
 .slider-btn:hover { background: var(--acc-purple); color: white; border-color: var(--acc-purple); }
+/* --- TECH PROFICIENCY LIST --- */
+.tech-section {
+    max-width: 1100px;
+    margin-bottom: 100px;
+    margin-left: 0;
+    padding: 0 2rem;
+    text-align: left;
+}
+
+.tech-list-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns on desktop for a "Grid-List" feel */
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    display: flex;
+    gap: 15px;
+    position: relative;
+    padding: 20px;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid transparent; /* Subtle hover transition prep */
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    border-color: var(--border);
+    transform: translateX(5px);
+}
+
+/* The "Bracket" Accent - unique compared to the music dots */
+.tech-accent {
+    width: 4px;
+    height: 40px;
+    background: var(--acc-green); /* Tech uses the green accent color */
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.tech-details h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.tech-details p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+/* Mobile: Stack into a single column */
+@media (max-width: 768px) {
+    .tech-list-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
