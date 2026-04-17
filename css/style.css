@@ -878,3 +878,38 @@ a {
         grid-template-columns: 1fr; /* Stack cards on top of each other */
     }
 }
+/* --- FIX: HEADER OVERLAP & DARK MODE BUTTONS --- */
+
+/* 1. Increases space so header doesn't cover text */
+.experience-page {
+    margin-top: 180px; /* Increased from 150px to clear the header */
+}
+
+/* 2. Ensures settings buttons are visible in Dark Mode */
+[data-theme="dark"] .settings-btn {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .settings-btn:hover {
+    color: #ffffff;
+    background: var(--acc-purple);
+    border-color: var(--acc-purple);
+}
+
+/* 3. Prevents skill tags from splitting mid-word */
+.tag {
+    display: inline-block;
+    white-space: nowrap;
+    margin-bottom: 8px;
+}
+
+/* 4. Adds breathing room between Resume sections */
+.section-title {
+    margin-top: 60px;
+}
+
+/* 5. Adjusts the grid ratio to prevent text cramping */
+.skills-awards-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+}
