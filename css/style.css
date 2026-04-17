@@ -1378,3 +1378,6 @@ a {
         gap: 20px;
     }
 }
+.gallery-wrapper {
+    margin-top: 60px; /* Adjust this number to get the perfect gap */
+}
