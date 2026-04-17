@@ -1223,9 +1223,32 @@ a {
     justify-content: center;
 }
 
+/* 1. The Container: This defines the "frame" for the badge */
+.badge-visual {
+    width: 140px;  /* Control the size of the badge here */
+    height: 140px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevents anything from "bleeding" out */
+}
+
+/* 2. The Image: This tells the image to obey the container */
+.badge-img {
+    max-width: 100%;  /* Never wider than the badge-visual div */
+    max-height: 100%; /* Never taller than the badge-visual div */
+    width: auto;      /* Maintains original aspect ratio */
+    height: auto;     /* Maintains original aspect ratio */
+    object-fit: contain; /* Ensures the whole badge is visible without cropping */
+    display: block;
+}
+
+/* 3. The Badge Card: Ensures the card itself doesn't grow with the image */
 .badge-item {
     position: absolute;
-    width: 300px;
+    width: 320px; /* Fixed width for the card */
+    max-height: 400px; /* Fixed height for the card */
     background: var(--bg-card);
     border: 1px solid var(--border);
     padding: 30px;
@@ -1234,7 +1257,7 @@ a {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     pointer-events: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: hidden; /* Safety net to prevent text/image bleed */
 }
 
 /* 3D Positions */
