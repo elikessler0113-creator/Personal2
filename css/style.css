@@ -760,3 +760,48 @@ a {
         gap: 2rem;
     }
 }
+/* --- EXPERIENCE PAGE STYLES --- */
+.experience-page {
+    max-width: 1100px;
+    margin: 120px auto 80px auto;
+    padding: 0 2rem;
+}
+
+.experience-intro {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.experience-intro h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.intro-description {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+}
+
+/* The Grid for Project Cards */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .experience-intro h1 {
+        font-size: 2.5rem;
+    }
+    
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
