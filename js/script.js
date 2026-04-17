@@ -100,3 +100,23 @@ mobileLinks.forEach(link => {
         document.body.style.overflow = 'auto';
     });
 });
+// --- PROGRESS BAR ANIMATION ---
+const progressBars = document.querySelectorAll('.progress-fill');
+
+const observerOptions = {
+    threshold: 0.5 // Trigger when 50% of the bar is visible
+};
+
+const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bar = entry.target;
+            const targetWidth = bar.getAttribute('data-percent');
+            bar.style.width = targetWidth;
+            // Stop observing once the animation has played
+            barObserver.unobserve(bar);
+        }
+    });
+}, observerOptions);
+
+progressBars.forEach(bar => barObserver.observe(bar));
