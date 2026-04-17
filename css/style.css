@@ -927,51 +927,98 @@ a {
     background: var(--acc-purple);
     border-color: var(--acc-purple);
 }
-/* --- MUSIC UNIQUE STYLES --- */
-.music-experience {
-    max-width: 800px;
-    margin: 40px auto;
-    padding-left: 20px;
-    border-left: 2px solid var(--border); /* The rhythm line */
+/* --- MUSIC EXPERIENCE SECTION --- */
+
+/* 1. The main container pinned to the left of the screen */
+.music-section {
+    max-width: 1100px; 
+    margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: 0;   /* Pulls the whole section to the left */
+    padding: 0 2rem;
+    text-align: left;
 }
 
-.music-item {
+/* 2. The title and the small purple accent line */
+.section-header-music {
     margin-bottom: 50px;
+}
+
+.section-header-music h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.header-line {
+    width: 60px;
+    height: 4px;
+    background: var(--acc-purple);
+    border-radius: 2px;
+}
+
+/* 3. The vertical line connecting the ensembles */
+.music-experience {
+    max-width: 850px; /* Limits width of paragraphs for better readability */
+    margin-left: 0;
+    padding-left: 20px;
+    border-left: 2px solid var(--border); /* This is the rhythm line */
+    text-align: left;
+}
+
+/* 4. The container for each individual ensemble */
+.music-item {
+    margin-bottom: 60px;
     position: relative;
     padding-left: 30px;
 }
 
-.music-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
+/* 5. The purple dot that sits on the rhythm line */
 .music-dot {
     position: absolute;
-    left: -7px; /* Centers dot on the rhythm line */
+    left: -31px; /* Positions dot perfectly centered on the 2px border */
+    top: 8px;    /* Aligns dot with the top of the h3 text */
     height: 12px;
     width: 12px;
     background: var(--acc-purple);
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+/* Interaction: Dot grows and turns green when hovering over the ensemble */
 .music-item:hover .music-dot {
-    transform: scale(1.5);
-    background: var(--acc-green);
+    transform: scale(1.4);
+    background-color: var(--acc-green);
 }
 
+/* 6. Ensemble Title and Text */
 .music-header h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text);
+    margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
 
 .music-content p {
     color: var(--text-dim);
     font-size: 1.05rem;
-    line-height: 1.7;
-    max-width: 650px;
+    line-height: 1.8;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .music-section {
+        padding: 0 1.5rem;
+    }
+    
+    .section-header-music h2 {
+        font-size: 1.8rem;
+    }
+
+    .music-experience {
+        max-width: 100%;
+    }
 }
