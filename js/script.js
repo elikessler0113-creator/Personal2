@@ -180,3 +180,16 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider();
     });
 });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.1 });
+
+// Apply it to all your sections
+document.querySelectorAll('section').forEach((section) => {
+    section.classList.add('reveal');
+    observer.observe(section);
+});
