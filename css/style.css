@@ -996,6 +996,14 @@ a {
     font-size: 1.05rem;
     line-height: 1.8;
 }
+.music-divider {
+    height: 1px;
+    width: 100%;
+    max-width: 600px; /* Limits width so it doesn't span the whole screen */
+    margin: 30px 0 50px 0; /* Creates nice spacing above and below */
+    background: linear-gradient(to right, var(--acc-purple), rgba(168, 85, 247, 0.1), transparent);
+    border: none;
+}
 /* --- LANGUAGE SECTION --- */
 .language-section {
     max-width: 1100px;
