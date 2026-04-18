@@ -1019,27 +1019,37 @@ a {
     line-height: 1.8;
 }
 /* --- MUSIC SECTION FIXES --- */
-.music-list {
-    position: relative;
-    padding-left: 20px; /* Space for the line */
-    margin-top: 30px;
-}
-
-/* The vertical line */
+/* 1. The Vertical Line */
 .music-list::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 10px; /* Start at the first dot */
-    bottom: 20px; /* Stop it from bleeding past the last item */
+    left: 0;             /* Keep this at 0 */
+    top: 10px;
+    bottom: 20px;
     width: 2px;
-    background: var(--border); /* Subtle line color */
+    background: var(--border);
 }
 
+/* 2. The Purple Dot */
+.music-item::before {
+    content: '';
+    position: absolute;
+    /* FIX: Center it on a 2px line */
+    /* If the dot is 10px wide, -4px from the left will center it on a 2px line */
+    left: -4px;          
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: var(--acc-purple);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* 3. The Text Container */
 .music-item {
     position: relative;
-    padding-bottom: 40px; /* Creates the vertical gap between ensembles */
-    padding-left: 30px;
+    padding-left: 30px;  /* This pushes the text away from the dot */
+    padding-bottom: 40px;
 }
 
 /* The Dot */
