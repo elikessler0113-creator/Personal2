@@ -1064,7 +1064,46 @@ a {
     border-radius: 50%;
     z-index: 2;
 }
+/* The Container */
+.music-list {
+    position: relative;
+    margin-top: 30px;
+    padding-left: 0; /* Resetting this is key */
+}
 
+/* The Line - Locked to the far left (0) */
+.music-list::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 20px;
+    width: 2px;
+    background: #333; /* Use a visible color like #333 or var(--border) */
+}
+
+/* The Item */
+.music-item {
+    position: relative;
+    /* This padding creates the space for the dot/line to exist */
+    padding-left: 30px; 
+    padding-bottom: 40px;
+}
+
+/* The Dot - Centered on the 0 line */
+.music-item::before {
+    content: '';
+    position: absolute;
+    /* If the line is at 0, and the dot is 10px wide, 
+       -4px or -5px perfectly centers it on that 0 mark */
+    left: -4px; 
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: var(--acc-purple);
+    border-radius: 50%;
+    z-index: 2;
+}
 /* Remove the line after the very last item */
 .music-item:last-child {
     padding-bottom: 0;
