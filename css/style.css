@@ -1363,3 +1363,15 @@ a {
 .gallery-wrapper {
     margin-top: 60px; /* Adjust this number to get the perfect gap */
 }
+/* Elements start slightly lower and invisible */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* This class gets added by JavaScript when the user scrolls to it */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
