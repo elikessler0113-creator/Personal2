@@ -43,26 +43,35 @@ body {
     color: var(--text);
     line-height: 1.6;
     transition: background 0.3s ease;
+    padding-top: 70px; /* Must match the header height exactly */
+    margin: 0;
 }
-/* HEADER */
+/* --- UPDATED HEADER --- */
 .main-header {
-    position: fixed; /* or sticky */
+    position: fixed;
     top: 0;
-    left: 0;
+    left: 0;          /* CRITICAL: Keeps it from shifting on load */
     width: 100%;
-    background-color: var(--bg-main); /* Or your specific dark background color */
-    /* If you want it slightly modern/translucent: */
-    background-color: rgba(18, 18, 18, 0.95); 
-    backdrop-filter: blur(10px); /* This adds a nice blur effect to content behind it */
+    z-index: 9999;    /* CRITICAL: Keeps it above all page content */
     
-    border-bottom: 1px solid var(--border); /* Adds a subtle line to separate it from the page */
+    /* Use one background style - this one is sleek and dark */
+    background-color: rgba(18, 18, 18, 0.98); 
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    
+    /* This prevents the "jumping" during the scroll animation */
+    transition: transform 0.3s ease-in-out;
 }
-.header-settings, .mobile-menu-toggle {
-    /* Ensure they aren't using absolute positioning relative to the BODY */
-    /* They should be positioned relative to the .main-header container */
+
+/* Groups your buttons and hamburger together */
+.header-settings, 
+.mobile-menu-toggle {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
+
+/* KEEP YOUR EXISTING .header-container AND .logo BELOW THIS */
 .header-container {
     max-width: 1100px;
     margin: 0 auto;
