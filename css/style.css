@@ -938,189 +938,63 @@ a {
     background: var(--acc-purple);
     border-color: var(--acc-purple);
 }
-/* --- MUSIC EXPERIENCE SECTION --- */
-
-/* 1. The main container pinned to the left of the screen */
+/* --- CLEANED MUSIC SECTION --- */
 .music-section {
     max-width: 1100px; 
-    margin-top: 80px;
-    margin-bottom: 80px;
-    margin-left: 0;   /* Pulls the whole section to the left */
+    margin: 80px 0;
     padding: 0 2rem;
     text-align: left;
 }
 
-/* 2. The title and the small purple accent line */
-.section-header-music {
-    margin-bottom: 50px;
-}
-
-.section-header-music h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: var(--text);
-    margin-bottom: 12px;
-}
-
-.header-line {
-    width: 60px;
-    height: 4px;
-    background: var(--acc-purple);
-    border-radius: 2px;
-}
-
-/* 3. The vertical line connecting the ensembles */
 .music-experience {
-    max-width: 850px; /* Limits width of paragraphs for better readability */
+    max-width: 850px;
     margin-left: 0;
-    padding-left: 20px;
-    border-left: 2px solid var(--border); /* This is the rhythm line */
-    text-align: left;
-}
-
-/* 4. The container for each individual ensemble */
-.music-item {
-    margin-bottom: 60px;
+    /* This is your rhythm line */
+    border-left: 2px solid var(--border); 
+    padding-left: 30px; /* Space between the line and your text */
     position: relative;
-    padding-left: 30px;
 }
 
-/* 5. The purple dot that sits on the rhythm line */
-.music-dot {
+.music-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+/* THE DOT: Placed relative to the .music-item */
+.music-item::before {
+    content: '';
     position: absolute;
-    left: -31px; /* Positions dot perfectly centered on the 2px border */
-    top: 8px;    /* Aligns dot with the top of the h3 text */
+    /* CALCULATION: 
+       The line is at the very edge of the parent. 
+       padding-left is 30px. 
+       We move the dot left 30px to hit the line, 
+       then -1px more to center a 12px dot on a 2px line. */
+    left: -37px; 
+    top: 8px;
     height: 12px;
     width: 12px;
     background: var(--acc-purple);
     border-radius: 50%;
+    z-index: 5;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Interaction: Dot grows and turns green when hovering over the ensemble */
-.music-item:hover .music-dot {
+/* Hover Effect */
+.music-item:hover::before {
     transform: scale(1.4);
     background-color: var(--acc-green);
 }
 
-/* 6. Ensemble Title and Text */
 .music-header h3 {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text);
     margin-bottom: 8px;
-    letter-spacing: -0.5px;
 }
 
 .music-content p {
     color: var(--text-dim);
     font-size: 1.05rem;
     line-height: 1.8;
-}
-/* --- MUSIC SECTION FIXES --- */
-/* 1. The Vertical Line */
-.music-list::before {
-    content: '';
-    position: absolute;
-    left: 0;             /* Keep this at 0 */
-    top: 10px;
-    bottom: 20px;
-    width: 2px;
-    background: var(--border);
-}
-
-/* 2. The Purple Dot */
-.music-item::before {
-    content: '';
-    position: absolute;
-    /* FIX: Center it on a 2px line */
-    /* If the dot is 10px wide, -4px from the left will center it on a 2px line */
-    left: -4px;          
-    top: 8px;
-    width: 10px;
-    height: 10px;
-    background: var(--acc-purple);
-    border-radius: 50%;
-    z-index: 2;
-}
-
-/* 3. The Text Container */
-.music-item {
-    position: relative;
-    padding-left: 30px;  /* This pushes the text away from the dot */
-    padding-bottom: 40px;
-}
-
-/* The Dot */
-.music-item::before {
-    content: '';
-    position: absolute;
-    left: -4px; /* Center it on the 2px line */
-    top: 8px;
-    width: 10px;
-    height: 10px;
-    background: var(--acc-purple);
-    border-radius: 50%;
-    z-index: 2;
-}
-/* The Container */
-.music-list {
-    position: relative;
-    margin-top: 30px;
-    padding-left: 0; /* Resetting this is key */
-}
-
-/* The Line - Locked to the far left (0) */
-.music-list::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    bottom: 20px;
-    width: 2px;
-    background: #333; /* Use a visible color like #333 or var(--border) */
-}
-
-/* The Item */
-.music-item {
-    position: relative;
-    /* This padding creates the space for the dot/line to exist */
-    padding-left: 30px; 
-    padding-bottom: 40px;
-}
-
-/* The Dot - Centered on the 0 line */
-.music-item::before {
-    content: '';
-    position: absolute;
-    /* If the line is at 0, and the dot is 10px wide, 
-       -4px or -5px perfectly centers it on that 0 mark */
-    left: -4px; 
-    top: 6px;
-    width: 10px;
-    height: 10px;
-    background: var(--acc-purple);
-    border-radius: 50%;
-    z-index: 2;
-}
-/* Remove the line after the very last item */
-.music-item:last-child {
-    padding-bottom: 0;
-}
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .music-section {
-        padding: 0 1.5rem;
-    }
-    
-    .section-header-music h2 {
-        font-size: 1.8rem;
-    }
-
-    .music-experience {
-        max-width: 100%;
-    }
 }
 /* --- LANGUAGE SECTION --- */
 .language-section {
