@@ -44,16 +44,21 @@ body {
     line-height: 1.6;
     transition: background 0.3s ease;
 }
-
-/* --- HEADER --- */
+/* HEADER */
 .main-header {
-    position: fixed;
+    position: fixed; /* or sticky */
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 100;
-    background: var(--header-bg);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
+    
+    /* 1. The Background: Without this, content scrolls "through" the text */
+    background-color: var(--bg-main); 
+    
+    /* 2. The Depth: Keep it above all other elements */
+    z-index: 1000;
+    
+    /* 3. The Snap Fix: Prevents layout "jumping" */
+    margin: 0; 
 }
 
 .header-container {
