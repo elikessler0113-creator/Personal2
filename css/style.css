@@ -50,17 +50,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    background-color: var(--bg-main); /* Or your specific dark background color */
+    /* If you want it slightly modern/translucent: */
+    background-color: rgba(18, 18, 18, 0.95); 
+    backdrop-filter: blur(10px); /* This adds a nice blur effect to content behind it */
     
-    /* 1. The Background: Without this, content scrolls "through" the text */
-    background-color: var(--bg-main); 
-    
-    /* 2. The Depth: Keep it above all other elements */
-    z-index: 1000;
-    
-    /* 3. The Snap Fix: Prevents layout "jumping" */
-    margin: 0; 
+    border-bottom: 1px solid var(--border); /* Adds a subtle line to separate it from the page */
 }
-
+.header-settings, .mobile-menu-toggle {
+    /* Ensure they aren't using absolute positioning relative to the BODY */
+    /* They should be positioned relative to the .main-header container */
+    display: flex;
+    align-items: center;
+}
 .header-container {
     max-width: 1100px;
     margin: 0 auto;
