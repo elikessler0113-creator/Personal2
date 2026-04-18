@@ -1002,7 +1002,7 @@ a {
     line-height: 1.8;
 }
 .music-divider {
-    height: 10px;
+    height: 6px;
     width: 100%;
     max-width: 600px; /* Limits width so it doesn't span the whole screen */
     margin: 30px 0 50px 0; /* Creates nice spacing above and below */
