@@ -55,14 +55,16 @@ body {
     z-index: 9999;    /* CRITICAL: Keeps it above all page content */
     
     /* Use one background style - this one is sleek and dark */
-    background-color: rgba(18, 18, 18, 0.98); 
+    background-color: var(--bg-main); 
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     
     /* This prevents the "jumping" during the scroll animation */
     transition: transform 0.3s ease-in-out;
 }
-
+.logo, .nav-links a {
+    color: var(--text);
+}
 /* Groups your buttons and hamburger together */
 .header-settings, 
 .mobile-menu-toggle {
