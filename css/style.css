@@ -234,10 +234,10 @@ body {
         order: 1; /* Appears first */
     }
 
-    /* Your hamburger button */
+   /* Force hamburger to the right */
     .mobile-menu-toggle {
-        order: 2; /* Appears after the settings */
-        margin-left: 15px; /* Adds a little gap between the icons */
+        display: flex; /* Ensure it's visible on mobile */
+        order: 2; 
     }
 }
 @media (max-width: 400px) {
