@@ -1406,3 +1406,17 @@ a {
     );
     border: none;
 }
+/* 1. The initial state: hidden and slightly lower */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+    visibility: hidden; /* Prevents interaction until visible */
+}
+
+/* 2. The active state: visible and in its final position */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
