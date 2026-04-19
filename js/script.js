@@ -1,24 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. SELECT ELEMENTS
+    // --- 1. THEME & LANGUAGE ---
     const themeToggle = document.getElementById('theme-toggle');
     const themeLabel = document.getElementById('theme-label');
     const langToggle = document.getElementById('lang-toggle');
     const langLabel = document.getElementById('lang-label');
 
-    // 2. INITIAL STATE (Theme)
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
-    // 3. INITIAL STATE (Language)
     const savedLang = localStorage.getItem('language') || 'en';
     applyLanguage(savedLang);
-
-    // 4. INITIAL BUTTON TEXTS
     updateButtonTexts(savedTheme, savedLang);
 
-    // 5. THEME TOGGLE EVENT
     if (themeToggle) {
-        themeToggle.addEventListener('click', (e) => {
+        themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             const currentLang = localStorage.getItem('language') || 'en';
@@ -29,9 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. LANGUAGE TOGGLE EVENT
     if (langToggle) {
-        langToggle.addEventListener('click', (e) => {
+        langToggle.addEventListener('click', () => {
             const currentLang = localStorage.getItem('language') || 'en';
             const newLang = currentLang === 'en' ? 'es' : 'en';
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -41,8 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             updateButtonTexts(currentTheme, newLang);
         });
     }
-
-    // --- HELPER FUNCTIONS ---
 
     function applyLanguage(lang) {
         const elements = document.querySelectorAll('[data-en]');
@@ -56,12 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateButtonTexts(theme, lang) {
-        // Update Language Button
         if (langLabel) {
             langLabel.textContent = langLabel.getAttribute(`data-${lang}`);
         }
-
-        // Update Theme Button
         if (themeLabel) {
             if (theme === 'light') {
                 themeLabel.textContent = (lang === 'en') ? 'Dark Mode' : 'Modo Oscuro';
@@ -70,143 +59,104 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-});
-// --- Inside your DOMContentLoaded listener ---
-const menuToggle = document.getElementById('menu-toggle');
-const mobileOverlay = document.getElementById('mobile-overlay');
-const menuIcon = document.getElementById('menu-icon');
 
-if (menuToggle && mobileOverlay) {
-    menuToggle.addEventListener('click', () => {
-        mobileOverlay.classList.toggle('active');
-        
-        // Swap icon between Hamburger and X
-        if (mobileOverlay.classList.contains('active')) {
-            menuIcon.textContent = '✕';
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
-        } else {
-            menuIcon.textContent = '☰';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        }
-    });
-}
+    // --- 2. MOBILE MENU ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const menuIcon = document.getElementById('menu-icon');
 
-// Close menu if a link is clicked
-const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileOverlay.classList.remove('active');
-        menuIcon.textContent = '☰';
-        document.body.style.overflow = 'auto';
-    });
-});
-// --- PROGRESS BAR ANIMATION ---
-const progressBars = document.querySelectorAll('.progress-fill');
-
-const observerOptions = {
-    threshold: 0.5 // Trigger when 50% of the bar is visible
-};
-
-const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const bar = entry.target;
-            const targetWidth = bar.getAttribute('data-percent');
-            bar.style.width = targetWidth;
-            // Stop observing once the animation has played
-            barObserver.unobserve(bar);
-        }
-    });
-}, observerOptions);
-
-progressBars.forEach(bar => barObserver.observe(bar));
-let currentBadgeIdx = 0;
-const badges = document.querySelectorAll('.badge-item');
-
-function updateSlider() {
-    badges.forEach((badge, i) => {
-        badge.classList.remove('active', 'prev', 'next', 'hidden');
-        if (i === currentBadgeIdx) {
-            badge.classList.add('active');
-        } else if (i === (currentBadgeIdx - 1 + badges.length) % badges.length) {
-            badge.classList.add('prev');
-        } else if (i === (currentBadgeIdx + 1) % badges.length) {
-            badge.classList.add('next');
-        } else {
-            badge.classList.add('hidden');
-        }
-    });
-}
-
-document.getElementById('prevBadge').addEventListener('click', () => {
-    currentBadgeIdx = (currentBadgeIdx - 1 + badges.length) % badges.length;
-    updateSlider();
-});
-
-document.getElementById('nextBadge').addEventListener('click', () => {
-    currentBadgeIdx = (currentBadgeIdx + 1) % badges.length;
-    updateSlider();
-});
-document.addEventListener('DOMContentLoaded', () => {
-    let currentBadgeIdx = 0;
-    const badges = document.querySelectorAll('.badge-item');
-
-    function updateSlider() {
-        badges.forEach((badge, i) => {
-            badge.classList.remove('active', 'prev', 'next', 'hidden');
-            
-            if (i === currentBadgeIdx) {
-                badge.classList.add('active');
-            } else if (i === (currentBadgeIdx - 1 + badges.length) % badges.length) {
-                badge.classList.add('prev'); // This places the last badge on the left
-            } else if (i === (currentBadgeIdx + 1) % badges.length) {
-                badge.classList.add('next'); // This places the next badge on the right
+    if (menuToggle && mobileOverlay) {
+        menuToggle.addEventListener('click', () => {
+            mobileOverlay.classList.toggle('active');
+            if (mobileOverlay.classList.contains('active')) {
+                menuIcon.textContent = '✕';
+                document.body.style.overflow = 'hidden'; 
             } else {
-                badge.classList.add('hidden');
+                menuIcon.textContent = '☰';
+                document.body.style.overflow = 'auto'; 
             }
         });
     }
 
-    // --- ADD THIS LINE ---
-    updateSlider(); // Runs immediately so the left badge shows up on load
-
-    document.getElementById('prevBadge').addEventListener('click', () => {
-        currentBadgeIdx = (currentBadgeIdx - 1 + badges.length) % badges.length;
-        updateSlider();
+    const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileOverlay.classList.remove('active');
+            if (menuIcon) menuIcon.textContent = '☰';
+            document.body.style.overflow = 'auto';
+        });
     });
 
-    document.getElementById('nextBadge').addEventListener('click', () => {
-        currentBadgeIdx = (currentBadgeIdx + 1) % badges.length;
-        updateSlider();
-    });
-});
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+    // --- 3. PROGRESS BAR ANIMATION ---
+    const progressBars = document.querySelectorAll('.progress-fill');
+    if (progressBars.length > 0) {
+        const observerOptions = { threshold: 0.5 };
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const targetWidth = bar.getAttribute('data-percent');
+                    bar.style.width = targetWidth;
+                    barObserver.unobserve(bar);
+                }
+            });
+        }, observerOptions);
+
+        progressBars.forEach(bar => barObserver.observe(bar));
+    }
+
+    // --- 4. BADGE SLIDER LOGIC ---
+    const badges = document.querySelectorAll('.badge-item');
+    const prevBtn = document.getElementById('prevBadge');
+    const nextBtn = document.getElementById('nextBadge');
+
+    // ONLY run this logic if the elements actually exist on the current page
+    if (badges.length > 0 && prevBtn && nextBtn) {
+        let currentBadgeIdx = 0;
+
+        function updateSlider() {
+            badges.forEach((badge, i) => {
+                badge.classList.remove('active', 'prev', 'next', 'hidden');
+                if (i === currentBadgeIdx) {
+                    badge.classList.add('active');
+                } else if (i === (currentBadgeIdx - 1 + badges.length) % badges.length) {
+                    badge.classList.add('prev');
+                } else if (i === (currentBadgeIdx + 1) % badges.length) {
+                    badge.classList.add('next');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            });
         }
-    });
-}, { threshold: 0.1 });
 
-// Apply it to all your sections
-document.querySelectorAll('section').forEach((section) => {
-    section.classList.add('reveal');
-    observer.observe(section);
-});
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            // Un-observe once the animation is done to save performance
-            observer.unobserve(entry.target);
-        }
-    });
-}, { 
-    threshold: 0.1 // Triggers when 10% of the section is visible
-});
+        updateSlider();
 
-// Select all sections you want to reveal
-document.querySelectorAll('section, .music-item, .tech-item').forEach((el) => {
-    el.classList.add('reveal');
-    observer.observe(el);
+        prevBtn.addEventListener('click', () => {
+            currentBadgeIdx = (currentBadgeIdx - 1 + badges.length) % badges.length;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentBadgeIdx = (currentBadgeIdx + 1) % badges.length;
+            updateSlider();
+        });
+    }
+
+    // --- 5. SCROLL REVEAL ---
+    const revealElements = document.querySelectorAll('section, .music-item, .tech-item');
+    if (revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach((el) => {
+            el.classList.add('reveal');
+            revealObserver.observe(el);
+        });
+    }
 });
