@@ -1393,3 +1393,16 @@ a {
     opacity: 1;
     transform: translateY(0);
 }
+.about-divider {
+    height: 1px;
+    width: 100%;
+    max-width: 800px; /* Limits the width for better readability */
+    margin: 40px 0;    /* Spacing: 40px above and below the line */
+    background: linear-gradient(
+        to right, 
+        var(--acc-purple), 
+        rgba(168, 85, 247, 0.2), 
+        transparent
+    );
+    border: none;
+}
