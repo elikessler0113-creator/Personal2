@@ -43,7 +43,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     transition: background 0.3s ease;
-    padding-top: 70px; /* Must match the header height exactly */
+    padding-top: 70px;
     margin: 0;
     animation: fadeIn 0.8s ease-out;
 }
@@ -52,16 +52,12 @@ body {
 .main-header {
     position: fixed;
     top: 0;
-    left: 0;          /* CRITICAL: Keeps it from shifting on load */
+    left: 0;
     width: 100%;
-    z-index: 9999;    /* CRITICAL: Keeps it above all page content */
-    
-    /* Use one background style - this one is sleek and dark */
+    z-index: 9999;
     background-color: var(--header-bg); 
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-    
-    /* This prevents the "jumping" during the scroll animation */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -69,7 +65,6 @@ body {
     color: var(--text);
 }
 
-/* Groups your buttons and hamburger together */
 .header-settings, 
 .mobile-menu-toggle {
     display: flex;
@@ -77,7 +72,6 @@ body {
     justify-content: center;
 }
 
-/* KEEP YOUR EXISTING .header-container AND .logo BELOW THIS */
 .header-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -237,26 +231,33 @@ body {
     min-width: 120px;
 }
 
+[data-theme="dark"] .settings-btn {
+    color: var(--text);
+    border-color: var(--border);
+}
+
+[data-theme="dark"] .settings-btn:hover {
+    color: #ffffff;
+    background: var(--acc-purple);
+    border-color: var(--acc-purple);
+}
+
 /* --- UNIFIED MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    /* 1. The Parent Container: Pushes everything to the right */
-    /* Added aliases .header-actions and .page-settings to ensure it works with any HTML structure we discussed */
     .header-right, .header-actions {
         display: flex !important;
         flex-direction: row;
         align-items: center;
         gap: 12px;
-        order: 2; /* Keeps the whole group on the right side of the logo */
+        order: 2;
     }
 
-    /* 2. The Buttons: Keep them on the left of the group */
     .header-settings, .page-settings {
         display: flex;
         gap: 8px;
         order: 1; 
     }
 
-    /* 3. The Hamburger: Force it to the far right */
     .mobile-menu-toggle {
         display: flex !important;
         order: 2;
@@ -264,14 +265,12 @@ body {
         margin: 0;
     }
 
-    /* 4. Button Scaling: Stop them from being too wide */
     .settings-btn, .lang-btn {
         min-width: auto !important;
         padding: 6px 12px;
         font-size: 0.75rem;
     }
 
-    /* Existing Mobile fixes */
     .header-container { padding: 1rem; }
     .nav-links { display: none !important; }
     .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
@@ -281,14 +280,8 @@ body {
 
 /* --- INTERACTION STATES --- */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Scrollbar styling */
@@ -920,18 +913,6 @@ a {
     }
 }
 
-/* --- FIX: HEADER OVERLAP & DARK MODE BUTTONS --- */
-[data-theme="dark"] .settings-btn {
-    color: var(--text);
-    border-color: var(--border);
-}
-
-[data-theme="dark"] .settings-btn:hover {
-    color: #ffffff;
-    background: var(--acc-purple);
-    border-color: var(--acc-purple);
-}
-
 /* --- CLEANED MUSIC SECTION --- */
 .music-section {
     max-width: 1100px; 
@@ -943,9 +924,8 @@ a {
 .music-experience {
     max-width: 850px;
     margin-left: 0;
-    /* This is your rhythm line */
     border-left: 2px solid var(--border); 
-    padding-left: 30px; /* Space between the line and your text */
+    padding-left: 30px;
     position: relative;
 }
 
@@ -954,15 +934,9 @@ a {
     margin-bottom: 60px;
 }
 
-/* THE DOT: Placed relative to the .music-item */
 .music-item::before {
     content: '';
     position: absolute;
-    /* CALCULATION: 
-       The line is at the very edge of the parent. 
-       padding-left is 30px. 
-       We move the dot left 30px to hit the line, 
-       then -1px more to center a 12px dot on a 2px line. */
     left: -37px; 
     top: 8px;
     height: 12px;
@@ -973,7 +947,6 @@ a {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Hover Effect */
 .music-item:hover::before {
     transform: scale(1.4);
     background-color: var(--acc-green);
@@ -994,8 +967,8 @@ a {
 .music-divider {
     height: 6px;
     width: 100%;
-    max-width: 600px; /* Limits width so it doesn't span the whole screen */
-    margin: 30px 0 50px 0; /* Creates nice spacing above and below */
+    max-width: 600px;
+    margin: 30px 0 50px 0;
     background: linear-gradient(to right, var(--acc-purple), rgba(168, 85, 247, 0.1), transparent);
     border: none;
 }
@@ -1053,11 +1026,10 @@ a {
     height: 100%;
     background: linear-gradient(90deg, var(--acc-purple), var(--acc-green));
     border-radius: 4px;
-    width: 0%; /* Start at zero for the animation */
-    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); /* Smooth "out-speeding" effect */
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Narrative & Tags */
 .lang-narrative {
     margin-top: 40px;
     max-width: 800px;
@@ -1106,7 +1078,6 @@ a {
     font-size: 1.1rem;
 }
 
-/* Grid for specific examples */
 .leadership-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1149,7 +1120,6 @@ a {
     line-height: 1.6;
 }
 
-/* Mobile adjustments */
 @media (max-width: 600px) {
     .leadership-grid {
         grid-template-columns: 1fr;
@@ -1203,32 +1173,29 @@ a {
     justify-content: center;
 }
 
-/* 1. The Container: This defines the "frame" for the badge */
 .badge-visual {
-    width: 140px;  /* Control the size of the badge here */
+    width: 140px;
     height: 140px;
     margin: 0 auto 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Prevents anything from "bleeding" out */
+    overflow: hidden;
 }
 
-/* 2. The Image: This tells the image to obey the container */
 .badge-img {
-    max-width: 100%;  /* Never wider than the badge-visual div */
-    max-height: 100%; /* Never taller than the badge-visual div */
-    width: auto;      /* Maintains original aspect ratio */
-    height: auto;     /* Maintains original aspect ratio */
-    object-fit: contain; /* Ensures the whole badge is visible without cropping */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
 }
 
-/* 3. The Badge Card: Ensures the card itself doesn't grow with the image */
 .badge-item {
     position: absolute;
-    width: 320px; /* Fixed width for the card */
-    max-height: 400px; /* Fixed height for the card */
+    width: 320px;
+    max-height: 400px;
     background: var(--bg-card);
     border: 1px solid var(--border);
     padding: 30px;
@@ -1237,10 +1204,9 @@ a {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
     pointer-events: none;
-    overflow: hidden; /* Safety net to prevent text/image bleed */
+    overflow: hidden;
 }
 
-/* 3D Positions */
 .badge-item.active {
     opacity: 1;
     z-index: 10;
@@ -1248,12 +1214,11 @@ a {
     pointer-events: auto;
 }
 
-/* Explicitly define the previous position to be visible */
 .badge-item.prev {
     opacity: 0.4;
     z-index: 5;
     transform: translateX(-100%) scale(0.8) rotateY(20deg);
-    pointer-events: auto; /* Allows it to be seen/interacted with */
+    pointer-events: auto;
 }
 
 .badge-item.next {
@@ -1307,7 +1272,7 @@ a {
 
 .tech-list-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns on desktop for a "Grid-List" feel */
+    grid-template-columns: 1fr 1fr; 
     gap: 40px;
     margin-top: 30px;
 }
@@ -1319,7 +1284,7 @@ a {
     padding: 20px;
     background: var(--bg-card);
     border-radius: 12px;
-    border: 1px solid transparent; /* Subtle hover transition prep */
+    border: 1px solid transparent;
     transition: all 0.3s ease;
 }
 
@@ -1328,11 +1293,10 @@ a {
     transform: translateX(5px);
 }
 
-/* The "Bracket" Accent - unique compared to the music dots */
 .tech-accent {
     width: 4px;
     height: 40px;
-    background: var(--acc-green); /* Tech uses the green accent color */
+    background: var(--acc-green); 
     border-radius: 4px;
     flex-shrink: 0;
 }
@@ -1352,7 +1316,6 @@ a {
     max-width: 400px;
 }
 
-/* Mobile: Stack into a single column */
 @media (max-width: 768px) {
     .tech-list-container {
         grid-template-columns: 1fr;
@@ -1361,14 +1324,14 @@ a {
 }
 
 .gallery-wrapper {
-    margin-top: 60px; /* Adjust this number to get the perfect gap */
+    margin-top: 60px;
 }
 
 .about-divider {
     height: 1px;
     width: 100%;
-    max-width: 800px; /* Limits the width for better readability */
-    margin: 40px 0;    /* Spacing: 40px above and below the line */
+    max-width: 800px;
+    margin: 40px 0;
     background: linear-gradient(
         to right, 
         var(--acc-purple), 
@@ -1378,15 +1341,13 @@ a {
     border: none;
 }
 
-/* 1. The initial state: hidden and slightly lower */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.8s ease-out;
-    visibility: hidden; /* Prevents interaction until visible */
+    visibility: hidden;
 }
 
-/* 2. The active state: visible and in its final position */
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
