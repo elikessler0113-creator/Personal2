@@ -217,66 +217,46 @@ body {
     min-width: 120px;
 }
 
+/* --- UNIFIED MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .page-settings {
+    /* 1. The Parent Container: Pushes everything to the right */
+    .header-right {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        order: 2; /* Keeps the whole group on the right side of the logo */
+    }
+
+    /* 2. The Buttons: Keep them on the left of the group */
+    .header-settings {
         display: flex;
         gap: 8px;
-    }
-    .settings-btn {
-        min-width: auto;
-        padding: 6px 10px;
-        font-size: 0.75rem;
-    }
-}
-@media (max-width: 768px) {
-    /* Your settings container (theme/lang toggles) */
-    .header-settings {
-        order: 1; /* Appears first */
+        order: 1; 
     }
 
-   /* Force hamburger to the right */
+    /* 3. The Hamburger: Force it to the far right */
     .mobile-menu-toggle {
-        display: flex; /* Ensure it's visible on mobile */
-        order: 2; 
+        display: flex !important;
+        order: 2;
+        padding: 5px;
+        margin: 0;
     }
-}
-@media (max-width: 400px) {
-    .lang-btn {
+
+    /* 4. Button Scaling: Stop them from being too wide */
+    .settings-btn, .lang-btn {
         min-width: auto;
-        padding: 8px 10px;
-    }
-    #lang-label {
+        padding: 6px 12px;
         font-size: 0.75rem;
     }
+
+    /* Existing Mobile fixes */
+    .header-container { padding: 1rem; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
+    .hero-btns { display: flex; flex-direction: column; gap: 1rem; }
+    .btn { width: 100%; }
 }
-
-/* --- MOBILE OPTIMIZATION --- */
-@media (max-width: 768px) {
-    .header-container {
-        padding: 1rem;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .hero h1 {
-        font-size: 2.8rem;
-        letter-spacing: -1.5px;
-    }
-
-    .hero-btns {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .btn {
-        margin: 0;
-        width: 100%;
-    }
-}
-
 /* --- INTERACTION STATES --- */
 body {
     animation: fadeIn 0.8s ease-out;
