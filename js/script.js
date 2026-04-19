@@ -193,3 +193,20 @@ document.querySelectorAll('section').forEach((section) => {
     section.classList.add('reveal');
     observer.observe(section);
 });
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            // Un-observe once the animation is done to save performance
+            observer.unobserve(entry.target);
+        }
+    });
+}, { 
+    threshold: 0.1 // Triggers when 10% of the section is visible
+});
+
+// Select all sections you want to reveal
+document.querySelectorAll('section, .music-item, .tech-item').forEach((el) => {
+    el.classList.add('reveal');
+    observer.observe(el);
+});
