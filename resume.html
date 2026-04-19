@@ -27,16 +27,18 @@
             <a href="https://linkedin.com/in/kesslere" target="_blank" class="nav-linkedin">LinkedIn</a>
         </nav>
 
-        <button id="menu-toggle" class="settings-btn mobile-only" aria-label="Menu">
-            <span id="menu-icon">☰</span>
-        </button>
+        <div class="header-actions">
+            <div class="page-settings">
+                <button id="lang-toggle" class="settings-btn lang-btn">
+                    <span id="lang-label" data-en="Ver en Español" data-es="View in English">Ver en Español</span>
+                </button>
+                <button id="theme-toggle" class="settings-btn theme-btn">
+                    <span id="theme-label" data-en="Dark Mode" data-es="Modo Oscuro">Dark Mode</span>
+                </button>
+            </div>
 
-        <div class="page-settings">
-            <button id="lang-toggle" class="settings-btn lang-btn">
-                <span id="lang-label" data-en="Ver en Español" data-es="View in English">Ver en Español</span>
-            </button>
-            <button id="theme-toggle" class="settings-btn theme-btn">
-                <span id="theme-label" data-en="Dark Mode" data-es="Modo Oscuro">Dark Mode</span>
+            <button id="menu-toggle" class="mobile-menu-toggle" aria-label="Menu">
+                <span id="menu-icon">☰</span>
             </button>
         </div>
     </div>
@@ -51,18 +53,17 @@
     </nav>
 </div>
 
-<main>
 <main class="resume-page">
     <section class="download-section">
         <div class="download-container">
             <a href="assets/Eli Kessler - Resume.pdf" download class="download-btn">
-           
+            
                 <div class="btn-text">
                     <small data-en="Download" data-es="Descargar">Download</small>
                     <strong data-en="English PDF" data-es="PDF en Inglés">English PDF</strong>
                 </div>
             </a>
-            <a href="assets/Eli Kessler - Currículum.pdf" download class="download-btn">
+            <a href="assets/Eli Kessler - Currículum.pdf" download class="download-btn">
    
                 <div class="btn-text">
                     <small data-en="Download" data-es="Descargar">Download</small>
@@ -78,7 +79,7 @@
             <div class="resume-item">
                 <div class="item-header">
                     <h3 data-en="University of Minnesota Duluth" data-es="Universidad de Minnesota Duluth">University of Minnesota Duluth</h3>
-                    <span class="date" data-en="August 2024 - May 2028" data-es="Agosto de 2024 - Mayo de 2028">Agugst 2024 — May 2028</span>
+                    <span class="date" data-en="August 2024 - May 2028" data-es="Agosto de 2024 - Mayo de 2028">August 2024 — May 2028</span>
                 </div>
                 <p class="subtitle" data-en="Business Management & Spanish" data-es="Gestión Empresarial y Español">Business Management & Spanish</p>
                 <p class="details" data-en="Emphasis on business communication in English and Spanish." data-es="Énfasis en comunicación empresarial en inglés y español.">
@@ -204,7 +205,6 @@
         </div>
     </div>
 </section>
-</main>
 </main>
 <footer class="main-footer">
     <div class="footer-container">
