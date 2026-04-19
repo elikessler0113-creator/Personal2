@@ -45,7 +45,9 @@ body {
     transition: background 0.3s ease;
     padding-top: 70px; /* Must match the header height exactly */
     margin: 0;
+    animation: fadeIn 0.8s ease-out;
 }
+
 /* --- UPDATED HEADER --- */
 .main-header {
     position: fixed;
@@ -55,16 +57,18 @@ body {
     z-index: 9999;    /* CRITICAL: Keeps it above all page content */
     
     /* Use one background style - this one is sleek and dark */
-    background-color: var(--bg-main); 
+    background-color: var(--header-bg); 
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     
     /* This prevents the "jumping" during the scroll animation */
     transition: transform 0.3s ease-in-out;
 }
+
 .logo, .nav-links a {
     color: var(--text);
 }
+
 /* Groups your buttons and hamburger together */
 .header-settings, 
 .mobile-menu-toggle {
@@ -110,10 +114,26 @@ body {
     font-weight: 500;
     margin-left: 2rem;
     transition: 0.2s;
+    position: relative;
 }
 
 .nav-links a:hover {
     color: var(--acc-green);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--acc-green);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* --- HERO SECTION --- */
@@ -220,7 +240,8 @@ body {
 /* --- UNIFIED MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
     /* 1. The Parent Container: Pushes everything to the right */
-    .header-right {
+    /* Added aliases .header-actions and .page-settings to ensure it works with any HTML structure we discussed */
+    .header-right, .header-actions {
         display: flex !important;
         flex-direction: row;
         align-items: center;
@@ -229,7 +250,7 @@ body {
     }
 
     /* 2. The Buttons: Keep them on the left of the group */
-    .header-settings {
+    .header-settings, .page-settings {
         display: flex;
         gap: 8px;
         order: 1; 
@@ -245,23 +266,20 @@ body {
 
     /* 4. Button Scaling: Stop them from being too wide */
     .settings-btn, .lang-btn {
-        min-width: auto;
+        min-width: auto !important;
         padding: 6px 12px;
         font-size: 0.75rem;
     }
 
     /* Existing Mobile fixes */
     .header-container { padding: 1rem; }
-    .nav-links { display: none; }
+    .nav-links { display: none !important; }
     .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
     .hero-btns { display: flex; flex-direction: column; gap: 1rem; }
     .btn { width: 100%; }
 }
-/* --- INTERACTION STATES --- */
-body {
-    animation: fadeIn 0.8s ease-out;
-}
 
+/* --- INTERACTION STATES --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -271,25 +289,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.nav-links a {
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--acc-green);
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
 }
 
 /* Scrollbar styling */
@@ -549,10 +548,6 @@ a {
 
 /* --- MOBILE STYLES --- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none !important;
-    }
-
     #menu-toggle,
     .mobile-only {
         display: flex !important;
@@ -936,6 +931,7 @@ a {
     background: var(--acc-purple);
     border-color: var(--acc-purple);
 }
+
 /* --- CLEANED MUSIC SECTION --- */
 .music-section {
     max-width: 1100px; 
@@ -994,6 +990,7 @@ a {
     font-size: 1.05rem;
     line-height: 1.8;
 }
+
 .music-divider {
     height: 6px;
     width: 100%;
@@ -1002,6 +999,7 @@ a {
     background: linear-gradient(to right, var(--acc-purple), rgba(168, 85, 247, 0.1), transparent);
     border: none;
 }
+
 /* --- LANGUAGE SECTION --- */
 .language-section {
     max-width: 1100px;
@@ -1087,6 +1085,7 @@ a {
     font-weight: 600;
     color: var(--text);
 }
+
 /* --- LEADERSHIP SECTION --- */
 .leadership-section {
     max-width: 1100px;
@@ -1156,6 +1155,7 @@ a {
         grid-template-columns: 1fr;
     }
 }
+
 /* --- TECH & BADGE GALLERY --- */
 .tech-section {
     max-width: 1100px;
@@ -1295,6 +1295,7 @@ a {
 }
 
 .slider-btn:hover { background: var(--acc-purple); color: white; border-color: var(--acc-purple); }
+
 /* --- TECH PROFICIENCY LIST --- */
 .tech-section {
     max-width: 1100px;
@@ -1358,21 +1359,11 @@ a {
         gap: 20px;
     }
 }
+
 .gallery-wrapper {
     margin-top: 60px; /* Adjust this number to get the perfect gap */
 }
-/* Elements start slightly lower and invisible */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
 
-/* This class gets added by JavaScript when the user scrolls to it */
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
 .about-divider {
     height: 1px;
     width: 100%;
@@ -1386,6 +1377,7 @@ a {
     );
     border: none;
 }
+
 /* 1. The initial state: hidden and slightly lower */
 .reveal {
     opacity: 0;
@@ -1400,5 +1392,3 @@ a {
     transform: translateY(0);
     visibility: visible;
 }
-
-
